@@ -1,0 +1,61 @@
+package com.accper.controller;
+
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.accper.entity.User;
+import com.accper.service.UserService;
+
+@RestController
+@RequestMapping(value = "/user")
+public class UserController {
+	private final static Logger logger = LoggerFactory
+			.getLogger(UserController.class);
+	@Resource
+	private UserService userService;
+
+	@RequestMapping(value = "/getAll", method = RequestMethod.GET)
+	List<User> getAll() {
+		logger.info("the class is UserController ======> the method is getAll");
+		return userService.getAll();
+	}
+
+	@RequestMapping(value = "/getOne", method = RequestMethod.POST)
+	User getOne(Long id) {
+		logger.info(
+				"the class is UserController ======> the method is getOne, the id is {}",
+				id);
+		return userService.getOne(id);
+	}
+
+	@RequestMapping(value = "/insert", method = RequestMethod.POST)
+	void insert(User user) {
+		logger.info(
+				"the class is UserController ======> the method is insert, the user is {}",
+				user.toString());
+		userService.insert(user);
+	}
+
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	void update(User user) {
+		logger.info(
+				"the class is UserController ======> the method is update, the user is {}",
+				user.toString());
+		userService.update(user);
+	}
+
+	@RequestMapping(value = "/delete", method = RequestMethod.POST)
+	void delete(Long id) {
+		logger.info(
+				"the class is UserController ======> the method is delete, the id is {}",
+				id);
+		userService.delete(id);
+	}
+}

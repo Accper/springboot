@@ -9,22 +9,21 @@ public class User implements Serializable {
 	private Long id;
 	private String userName;
 	private String passWord;
-	private String email;
+	private String userSex;
 	private String nickName;
-	private String regTime;
 
 	public User() {
 		super();
 	}
 
-	public User(String userName, String passWord, String email,
-			String nickName, String regTime) {
+	public User(Long id, String userName, String passWord, String userSex,
+			String nickName) {
 		super();
+		this.id = id;
 		this.userName = userName;
 		this.passWord = passWord;
-		this.email = email;
+		this.userSex = userSex;
 		this.nickName = nickName;
-		this.regTime = regTime;
 	}
 
 	public Long getId() {
@@ -51,12 +50,12 @@ public class User implements Serializable {
 		this.passWord = passWord;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getUserSex() {
+		return userSex;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setUserSex(String userSex) {
+		this.userSex = userSex;
 	}
 
 	public String getNickName() {
@@ -67,14 +66,6 @@ public class User implements Serializable {
 		this.nickName = nickName;
 	}
 
-	public String getRegTime() {
-		return regTime;
-	}
-
-	public void setRegTime(String regTime) {
-		this.regTime = regTime;
-	}
-
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
@@ -82,8 +73,8 @@ public class User implements Serializable {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", userName=" + userName + ", passWord="
-				+ passWord + ", email=" + email + ", nickName=" + nickName
-				+ ", regTime=" + regTime + "]";
+				+ passWord + ", userSex=" + userSex + ", nickName=" + nickName
+				+ "]";
 	}
-
+	
 }
